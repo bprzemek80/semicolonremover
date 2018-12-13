@@ -12,19 +12,15 @@ import { SemicolonRemover } from './semicolon-remover';
 export function activate(context: vscode.ExtensionContext) {
 
     console.log('Congratulations, your extension "WordCount" is now active!');
+    
+    let semicolonRemover = new SemicolonRemover();    
 
-    let activeEditor: TextEditor = vscode.window.activeTextEditor;
-    let semicolonRemover = new SemicolonRemover();
-
-    let disposable = vscode.commands.registerCommand('extension.semicolonRemover', () => {
-
-        const editor = new vscode.WorkspaceEdit();
-
+    let disposable = vscode.commands.registerCommand('extension.semicolonRemover', () => {        
         vscode.commands.executeCommand('editor.action.organizeImports')
             .then(() => {
                 setTimeout(() => {
-                    semicolonRemover.removeSemicolons(activeEditor, editor);
-                    vscode.workspace.applyEdit(editor);
+                    semicolonRemover.removeSemicolons();
+                    vscode.workspace.applyEdit(semicolonRemover.editor);
                 }, 500);
             });
     });

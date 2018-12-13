@@ -1,10 +1,18 @@
 import * as vscode from 'vscode';
+import { window, TextEditor } from 'vscode';
 
 export class SemicolonRemover {
-    public removeSemicolons(activeEditor: vscode.TextEditor, editor: vscode.WorkspaceEdit) {
-        const hasSemicolon = (text: string, size: number) => text.substring(size - 1, size) === ';'
+    
+    editor: vscode.WorkspaceEdit;
 
-        const uri = activeEditor.document.uri;
+    public removeSemicolons() {
+
+        this.editor = new vscode.WorkspaceEdit();    
+
+        const hasSemicolon = (text: string, size: number) => text.substring(size - 1, size) === ';'
+        
+        let activeEditor: TextEditor = vscode.window.activeTextEditor;        
+        let uri = activeEditor.document.uri;
 
         for (let i = 0; i < activeEditor.document.lineCount; i++) {
             const line = activeEditor.document.lineAt(i);
@@ -13,7 +21,7 @@ export class SemicolonRemover {
                 const start = new vscode.Position(i, textLength - 1);
                 const end = new vscode.Position(i, textLength);
                 const range = new vscode.Range(start, end);
-                editor.delete(uri, range);
+                this.editor.delete(uri, range);
             }
         }
     }
