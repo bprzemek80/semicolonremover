@@ -9,10 +9,7 @@ import { SemicolonRemover } from './semicolon-remover';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
-
-    console.log('Congratulations, your extension "WordCount" is now active!');
-    
+export function activate(context: vscode.ExtensionContext) {    
     let semicolonRemover = new SemicolonRemover();    
 
     let disposable = vscode.commands.registerCommand('extension.semicolonRemover', () => {        
@@ -21,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
                 setTimeout(() => {
                     semicolonRemover.removeSemicolons();
                     vscode.workspace.applyEdit(semicolonRemover.editor);
-                }, 500);
+                }, 250);
             });
     });
 
