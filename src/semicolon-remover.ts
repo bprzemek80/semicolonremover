@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { window, TextEditor } from 'vscode';
+import { TextEditor } from 'vscode';
 
 export class SemicolonRemover {
     

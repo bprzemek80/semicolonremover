@@ -3,8 +3,8 @@
     "publisher": "bprzemek80",
     "icon": "images/icon.png",
     "displayName": "SemicolonRemover",
-    "description": "Will remove last character in every line, that match to the pattern after 'OrganizeImports' command have been launched. ",
-    "version": "1.0.3",
+    "description": "Removing all semicolon occurrence that were last character in the active document in every line after 'OrganizeImports' command have been launched.",
+    "version": "1.0.4",
     "engines": {
         "vscode": "^1.30.0"
     },
@@ -24,10 +24,12 @@
     },
     "main": "./out/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.semicolonRemover",
-            "title": "SemicolonRemover"
-        }]
+        "commands": [
+            {
+                "command": "extension.semicolonRemover",
+                "title": "SemicolonRemover"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

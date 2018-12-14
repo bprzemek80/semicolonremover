@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.4
+- Replace image icon, remove unused imports, performance improvement
+
 ## 1.0.3
 - Replace image icon
 
