@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.3
+- Replace image icon
+
 ## 1.0.2
 - Organize code, remove unnecessary console log
 
